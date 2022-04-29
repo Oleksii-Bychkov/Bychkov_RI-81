@@ -1,6 +1,6 @@
 ################################################################################
 # Automatically-generated file. Do not edit!
-# Toolchain: GNU Tools for STM32 (9-2020-q2-update)
+# Toolchain: GNU Tools for STM32 (10.3-2021.10)
 ################################################################################
 
 -include ../makefile.init
@@ -34,35 +34,37 @@ $(wildcard ../makefile.init) \
 $(wildcard ../makefile.targets) \
 
 
-BUILD_ARTIFACT_NAME := Lab1_Bychkov_RI-81
+BUILD_ARTIFACT_NAME := Bychkov_O_Lab4
 BUILD_ARTIFACT_EXTENSION := elf
 BUILD_ARTIFACT_PREFIX :=
 BUILD_ARTIFACT := $(BUILD_ARTIFACT_PREFIX)$(BUILD_ARTIFACT_NAME)$(if $(BUILD_ARTIFACT_EXTENSION),.$(BUILD_ARTIFACT_EXTENSION),)
 
 # Add inputs and outputs from these tool invocations to the build variables 
 EXECUTABLES += \
-Lab1_Bychkov_RI-81.elf \
+Bychkov_O_Lab4.elf \
+
+MAP_FILES += \
+Bychkov_O_Lab4.map \
 
 SIZE_OUTPUT += \
 default.size.stdout \
 
 OBJDUMP_LIST += \
-Lab1_Bychkov_RI-81.list \
+Bychkov_O_Lab4.list \
 
-OBJCOPY_BIN += \
-Lab1_Bychkov_RI-81.bin \
+OBJCOPY_HEX += \
+Bychkov_O_Lab4.hex \
 
 
 # All Target
-all:
-	+@$(MAKE) --no-print-directory main-build && $(MAKE) --no-print-directory post-build
+all: main-build
 
 # Main-build Target
-main-build: Lab1_Bychkov_RI-81.elf secondary-outputs
+main-build: Bychkov_O_Lab4.elf secondary-outputs
 
 # Tool invocations
-Lab1_Bychkov_RI-81.elf: $(OBJS) $(USER_OBJS) W:\IAC\1\ Lab\STM32F103C6TX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "Lab1_Bychkov_RI-81.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m3 -T"W:\IAC\1 Lab\STM32F103C6TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Lab1_Bychkov_RI-81.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Bychkov_O_Lab4.elf Bychkov_O_Lab4.map: $(OBJS) $(USER_OBJS) C:\Users\PC\STM32CubeIDE\workspace_1.8.0\Bychkov_O_Lab4\STM32F103C8TX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "Bychkov_O_Lab4.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m3 -T"C:\Users\PC\STM32CubeIDE\workspace_1.8.0\Bychkov_O_Lab4\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Bychkov_O_Lab4.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
@@ -71,26 +73,22 @@ default.size.stdout: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
 	@echo 'Finished building: $@'
 	@echo ' '
 
-Lab1_Bychkov_RI-81.list: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-objdump -h -S $(EXECUTABLES) > "Lab1_Bychkov_RI-81.list"
+Bychkov_O_Lab4.list: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-objdump -h -S $(EXECUTABLES) > "Bychkov_O_Lab4.list"
 	@echo 'Finished building: $@'
 	@echo ' '
 
-Lab1_Bychkov_RI-81.bin: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-objcopy  -O binary $(EXECUTABLES) "Lab1_Bychkov_RI-81.bin"
+Bychkov_O_Lab4.hex: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-objcopy  -O ihex $(EXECUTABLES) "Bychkov_O_Lab4.hex"
 	@echo 'Finished building: $@'
 	@echo ' '
 
 # Other Targets
 clean:
-	-$(RM) Lab1_Bychkov_RI-81.bin Lab1_Bychkov_RI-81.elf Lab1_Bychkov_RI-81.list default.size.stdout
+	-$(RM) Bychkov_O_Lab4.elf Bychkov_O_Lab4.hex Bychkov_O_Lab4.list Bychkov_O_Lab4.map default.size.stdout
 	-@echo ' '
 
-post-build:
-	arm-none-eabi-objcopy -O ihex Lab1_Bychkov_RI-81.elf Lab1_Bychkov_RI-81.hex
-	-@echo ' '
-
-secondary-outputs: $(SIZE_OUTPUT) $(OBJDUMP_LIST) $(OBJCOPY_BIN)
+secondary-outputs: $(SIZE_OUTPUT) $(OBJDUMP_LIST) $(OBJCOPY_HEX)
 
 fail-specified-linker-script-missing:
 	@echo 'Error: Cannot find the specified linker script. Check the linker settings in the build configuration.'
@@ -99,6 +97,6 @@ fail-specified-linker-script-missing:
 warn-no-linker-script-specified:
 	@echo 'Warning: No linker script specified. Check the linker settings in the build configuration.'
 
-.PHONY: all clean dependents main-build fail-specified-linker-script-missing warn-no-linker-script-specified post-build
+.PHONY: all clean dependents main-build fail-specified-linker-script-missing warn-no-linker-script-specified
 
 -include ../makefile.targets
